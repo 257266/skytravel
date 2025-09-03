@@ -45,3 +45,18 @@
     <footer><div class="container"><p>© 2025 SkyTravel • info@skytravel.vn • 0123 456 789</p></div></footer>
 </body>
 </html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Ngăn form reload trang
+
+      // Xóa nội dung các ô input và textarea
+      form.reset();
+
+      // Hiện thông báo gửi thành công
+      alert("Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.");
+    });
+  });
+</script>
