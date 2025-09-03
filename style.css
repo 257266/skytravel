@@ -398,3 +398,29 @@ footer {
         grid-template-columns: 1fr
     }
 }
+
+/* Toast popup */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #4CAF50;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Toast lỗi (ví dụ nhập thiếu) */
+.toast.error {
+  background: #e53935;
+}
+
