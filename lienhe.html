@@ -9,41 +9,38 @@
 <body>
   <!-- Header -->
   <header>
-    <nav class="navbar">
-      <div class="logo">SkyTravel</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Trang chủ</a></li>
-        <li><a href="gioithieu.html">Giới thiệu</a></li>
-        <li><a href="tour.html">Tour</a></li>
-        <li><a href="banggia.html">Bảng giá</a></li>
-        <li><a href="lienhe.html" class="active">Liên hệ</a></li>
-      </ul>
-    </nav>
-  </header>
+        <div class="container nav">
+            <div class="brand"><div class="logo"></div>SkyTravel</div>
+            <nav class="menu">
+                <a href="index.html" aria-current="page">Trang chủ</a>
+                <a href="gioithieu.html">Giới thiệu</a>
+                <a href="tour.html">Tour</a>
+                <a href="banggia.html">Bảng giá</a>
+                <a href="lienhe.html">Liên hệ</a>
+            </nav>
+            <a href="tour.html" class="cta-btn">Đặt Tour</a>
+        </div>
+    </header>
 
   <!-- Main -->
-  <main class="container">
-    <h1>Liên hệ với chúng tôi</h1>
-    <p>Nếu bạn có thắc mắc hoặc muốn đặt tour, vui lòng để lại thông tin, chúng tôi sẽ phản hồi sớm nhất.</p>
-    
-    <form class="contact-form">
-      <label for="name">Họ và tên:</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="message">Nội dung:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-
-      <button type="submit" class="btn">Gửi</button>
+  <section class="container section fade-in">
+    <h1>Liên hệ</h1>
+    <p>Nếu bạn cần tư vấn, hãy để lại thông tin. Chúng tôi sẽ phản hồi trong giờ làm việc.</p>
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Chúng tôi đã nhận thông tin.');">
+      <label>Họ và tên</label>
+      <input type="text" placeholder="Nguyễn Văn A" required>
+      <label>Email</label>
+      <input type="email" placeholder="email@domain.com" required>
+      <label>Số điện thoại</label>
+      <input type="tel" placeholder="0123 456 789" required>
+      <label>Nội dung</label>
+      <textarea rows="5" placeholder="Tôi muốn tư vấn về..."></textarea>
+      <button type="submit" class="btn primary">Gửi</button>
     </form>
-  </main>
+  </section>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 SkyTravel. All rights reserved.</p>
-  </footer>
+  <footer><div class="container"><p>© 2025 SkyTravel • info@skytravel.vn • 0123 456 789</p></div></footer>
 
   <!-- Toast -->
   <div id="toast" class="toast">Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.</div>
