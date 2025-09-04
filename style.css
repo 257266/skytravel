@@ -462,43 +462,46 @@ footer {
   display: block;
 
 /* Slider */
-.slider {
+.slider.multi {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
   margin-top: 20px;
 }
 
-.slides {
+.slider.multi .slides {
   display: flex;
   transition: transform 0.6s ease-in-out;
 }
 
-.slide {
-  min-width: 100%;
+.slider.multi .slide {
+  min-width: 33.33%;
+  box-sizing: border-box;
+  padding: 0 10px;
   position: relative;
 }
 
-.slide img {
+.slider.multi .slide img {
   width: 100%;
-  height: 350px;
+  height: 250px;
   object-fit: cover;
   border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.caption {
+.slider.multi .caption {
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 20px;
   background: rgba(0,0,0,0.6);
   color: #fff;
-  padding: 10px 15px;
+  padding: 6px 12px;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* Nút điều hướng */
-.slider .prev, .slider .next {
+.slider.multi .prev,
+.slider.multi .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -511,9 +514,11 @@ footer {
   font-size: 18px;
 }
 
-.slider .prev { left: 10px; }
-.slider .next { right: 10px; }
+.slider.multi .prev { left: 10px; }
+.slider.multi .next { right: 10px; }
 
-.slider .prev:hover, .slider .next:hover {
+.slider.multi .prev:hover,
+.slider.multi .next:hover {
   background: rgba(0,0,0,0.8);
 }
+
