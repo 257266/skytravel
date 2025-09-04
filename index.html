@@ -72,73 +72,44 @@
     <footer><div class="container"><p>© 2025 SkyTravel • info@skytravel.vn • 0123 456 789</p></div></footer>
 
 	<script>
-		document.addEventListener('DOMContentLoaded', function(){
-			  const slider = document.querySelector('.slider.one');
-			  const track  = slider.querySelector('.slides');
-			  let slides   = Array.from(track.children);
-			  const prevBtn = slider.querySelector('.prev');
-			  const nextBtn = slider.querySelector('.next');
-			
-			  const autoplayMs = 5000;
-			  let index = 1;          // bắt đầu ở slide thật đầu tiên (sau clone)
-			  let timer, startX = 0, deltaX = 0;
-			
-			  // Tạo clone để loop mượt
-			  const firstClone = slides[0].cloneNode(true);
-			  const lastClone  = slides[slides.length - 1].cloneNode(true);
-			  track.appendChild(firstClone);
-			  track.insertBefore(lastClone, slides[0]);
-			  slides = Array.from(track.children); // cập nhật NodeList sau khi clone
-			
-			  function goTo(i, animate = true){
-			    track.style.transition = animate ? 'transform .55s ease' : 'none';
-			    track.style.transform = `translateX(${-i * 100}%)`;
-			  }
-			
-			  // Vị trí khởi tạo (slide thật đầu tiên)
-			  goTo(index, false);
-			
-			  // Điều hướng
-			  nextBtn.addEventListener('click', () => { index++; goTo(index); resetAutoplay(); });
-			  prevBtn.addEventListener('click', () => { index--; goTo(index); resetAutoplay(); });
-			
-			  // Sau khi trượt xong, nếu đang ở clone thì nhảy về slide thật tương ứng (không animation)
-			  track.addEventListener('transitionend', () => {
-			    if (slides[index] === firstClone) {     // đang ở clone cuối
-			      index = 1;                            // quay về slide thật đầu
-			      goTo(index, false);
-			    } else if (slides[index] === lastClone) { // đang ở clone đầu
-			      index = slides.length - 2;            // quay về slide thật cuối
-			      goTo(index, false);
-			    }
-			  });
-			
-			  // Tự chạy
-			  function resetAutoplay(){
-			    clearInterval(timer);
-			    timer = setInterval(() => { index++; goTo(index); }, autoplayMs);
-			  }
-			  resetAutoplay();
-			
-			  // Vuốt trên mobile
-			  slider.addEventListener('touchstart', (e) => {
-			    startX = e.touches[0].clientX; deltaX = 0; clearInterval(timer);
-			  }, { passive: true });
-			
-			  slider.addEventListener('touchmove', (e) => {
-			    deltaX = e.touches[0].clientX - startX;
-			  }, { passive: true });
-			
-			  slider.addEventListener('touchend', () => {
-			    if (Math.abs(deltaX) > 50) {            // ngưỡng vuốt
-			      index += (deltaX < 0 ? 1 : -1);
-			      goTo(index);
-			    } else {
-			      goTo(index);                           // bật lại vị trí hiện tại
-			    }
-			    resetAutoplay();
-			  });
-			});
+		// Get the DOM elements for the image carousel
+		const wrapper = document.querySelector(".wrapper"),
+		  carousel = document.querySelector(".carousel"),
+		  images = document.querySelectorAll("img"),
+		  buttons = document.querySelectorAll(".button");
+		let imageIndex = 1,
+		  intervalId;
+		// Define function to start automatic image slider
+		const autoSlide = () => {
+		  // Start the slideshow by calling slideImage() every 2 seconds
+		  intervalId = setInterval(() => slideImage(++imageIndex), 2000);
+		};
+		// Call autoSlide function on page load
+		autoSlide();
+		// A function that updates the carousel display to show the specified image
+		const slideImage = () => {
+		  // Calculate the updated image index
+		  imageIndex = imageIndex === images.length ? 0 : imageIndex < 0 ? images.length - 1 : imageIndex;
+		  // Update the carousel display to show the specified image
+		  carousel.style.transform = `translate(-${imageIndex * 100}%)`;
+		};
+		// A function that updates the carousel display to show the next or previous image
+		const updateClick = (e) => {
+		  // Stop the automatic slideshow
+		  clearInterval(intervalId);
+		  // Calculate the updated image index based on the button clicked
+		  imageIndex += e.target.id === "next" ? 1 : -1;
+		  slideImage(imageIndex);
+		  // Restart the automatic slideshow
+		  autoSlide();
+		};
+		// Add event listeners to the navigation buttons
+		buttons.forEach((button) => button.addEventListener("click", updateClick));
+		// Add mouseover event listener to wrapper element to stop auto sliding
+		wrapper.addEventListener("mouseover", () => clearInterval(intervalId));
+		// Add mouseleave event listener to wrapper element to start auto sliding again
+		wrapper.addEventListener("mouseleave", autoSlide);
+		
 	</script>
 
 
