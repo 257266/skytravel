@@ -93,5 +93,30 @@
     </section>
 
     <footer><div class="container"><p>© 2025 SkyTravel • info@skytravel.vn • 0123 456 789</p></div></footer>
+
+	<script>
+	  const slides = document.querySelector('.slides');
+	  const slide = document.querySelectorAll('.slide');
+	  let index = 0;
+	
+	  function showSlide(i) {
+		index = (i + slide.length) % slide.length;
+		slides.style.transform = `translateX(${-index * 100}%)`;
+	  }
+	
+	  document.querySelector('.next').addEventListener('click', () => {
+		showSlide(index + 1);
+	  });
+	
+	  document.querySelector('.prev').addEventListener('click', () => {
+		showSlide(index - 1);
+	  });
+	
+	  // Tự động chạy slide mỗi 5 giây
+	  setInterval(() => {
+		showSlide(index + 1);
+	  }, 5000);
+	</script>
+
 </body>
 </html>
