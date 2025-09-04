@@ -99,32 +99,26 @@
 		  const multiSlide = document.querySelectorAll('.slider.multi .slide');
 		  let multiIndex = 0;
 		  const visibleSlides = 3; // số lượng hiển thị
+		  const totalSlides = multiSlide.length;
 		
 		  function showMultiSlide(i) {
-		    multiIndex = (i + multiSlide.length) % multiSlide.length;
+		    multiIndex = (i + totalSlides) % totalSlides;
 		    multiSlides.style.transform = `translateX(${-multiIndex * (100 / visibleSlides)}%)`;
 		  }
 		
 		  document.querySelector('.slider.multi .next').addEventListener('click', () => {
-		    if (multiIndex < multiSlide.length - visibleSlides) {
-		      showMultiSlide(multiIndex + 1);
-		    }
+		    showMultiSlide(multiIndex + 1);
 		  });
 		
 		  document.querySelector('.slider.multi .prev').addEventListener('click', () => {
-		    if (multiIndex > 0) {
-		      showMultiSlide(multiIndex - 1);
-		    }
+		    showMultiSlide(multiIndex - 1);
 		  });
 		
 		  // Tự động chạy slide mỗi 5 giây
 		  setInterval(() => {
-		    if (multiIndex < multiSlide.length - visibleSlides) {
-		      showMultiSlide(multiIndex + 1);
-		    } else {
-		      showMultiSlide(0); // quay lại đầu
-		    }
+		    showMultiSlide(multiIndex + 1);
 		  }, 5000);
 	</script>
+
 </body>
 </html>
