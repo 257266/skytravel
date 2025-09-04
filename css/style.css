@@ -1,4 +1,5 @@
-
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
 /* SkyTravel — clean, modern, responsive */
 :root {
     --bg: #0a0f1e;
@@ -461,135 +462,19 @@ footer {
 .dropdown:hover .dropdown-content {
   display: block;
 
-/* Slider 1 ảnh/lần */
-.slider.one {
-  position: relative;
-  overflow: hidden;
-  margin-top: 20px;
-  border-radius: 12px;
+#slide .owl-dots{ position:absolute; bottom: 10px; left:45%;}
+#slide .owl-dots .owl-dot span {
+      width: 12px;
+      height: 12px; 	
+}
+#slide .owl-nav { position:absolute; left:0px; top:40%; width:100%; }
+#slide .owl-nav [class*='owl-'] {
+	font-size:60px; /*background:rgba(255,255,255,.5);border:1px solid #fff; */ color: #fff
 }
 
-.slider.one .slides {
-  display: flex;
-  transition: transform .55s ease;
-}
-
-.slider.one .slide {
-  min-width: 100%;          /* 1 ảnh/lần */
-  position: relative;
-  padding: 0;               /* bỏ padding để full bề rộng */
-}
-
-.slider.one .slide img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-  box-shadow: 0 6px 20px rgba(0,0,0,.25);
-}
-
-.slider.one .caption {
-  position: absolute;
-  left: 16px;
-  bottom: 16px;
-  background: rgba(0,0,0,.55);
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-/* Nút điều hướng */
-.slider.one .prev,
-.slider.one .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,.5);
-  border: none;
-  color: #fff;
-  padding: 10px 12px;
-  cursor: pointer;
-  border-radius: 999px;
-  font-size: 18px;
-}
-.slider.one .prev { left: 10px; }
-.slider.one .next { right: 10px; }
-.slider.one .prev:hover,
-.slider.one .next:hover { background: rgba(0,0,0,.8); }
-
-/* Responsive chiều cao ảnh */
-@media (max-width: 768px){
-  .slider.one .slide img { height: 250px; }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #343f4f;
-}
-.wrapper {
-  display: flex;
-  max-width: 650px;
-  width: 100%;
-  height: 400px;
-  background: #fff;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-.wrapper i.button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 36px;
-  width: 36px;
-  background-color: #343f4f;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 36px;
-  color: #fff;
-  font-size: 15px;
-  transition: all 0.3s linear;
-  z-index: 100;
-  cursor: pointer;
-}
-i.button:active {
-  transform: scale(0.94) translateY(-50%);
-}
-i#prev {
-  left: 25px;
-}
-i#next {
-  right: 25px;
-}
-.image-container {
-  height: 320px;
-  max-width: 500px;
-  width: 100%;
-  overflow: hidden;
-}
-.image-container .carousel {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  transition: all 0.4s ease;
-}
-.carousel img {
-  height: 100%;
-  width: 100%;
-  border-radius: 18px;
-  border: 10px solid #fff;
-  object-fit: cover;
-}
+#slide .owl-nav .owl-next{ position:absolute; right:5%;}
+#slide .owl-nav .owl-prev{ position:absolute; left:5%;}
+#slide .owl-nav [class*='owl-']:hover {
+      background:none;border: none;
+      color:yellow;
+      text-decoration: none; }
