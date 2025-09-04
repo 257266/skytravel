@@ -425,6 +425,16 @@ footer {
 }
 
 /* Dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown > a {
+  padding: 8px 12px;
+  display: inline-block;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -447,3 +457,6 @@ footer {
 .dropdown-content a:hover {
   background: #2c3355;
 }
+
+.dropdown:hover .dropdown-content {
+  display: block;
