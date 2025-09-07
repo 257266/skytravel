@@ -102,6 +102,7 @@ header {
     .menu a {
         padding: 8px 12px;
         border-radius: 10px;
+		align-items: center;
         opacity: .9;
         transition: .2s
     }
